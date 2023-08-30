@@ -43,7 +43,7 @@ const SearchFirmsScreen = () => {
     },[searchValue])
 
     const onFirmPress = item => {
-        if (isSubscribed) {
+        if (isSubscribed || !isPaymentWorking) {
             navigation.navigate('FirmSingleScreen', {firmData: item})
         } else {
             setModalVisible(true)

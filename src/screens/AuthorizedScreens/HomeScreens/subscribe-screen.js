@@ -16,6 +16,8 @@ const SubscribeScreen = () => {
     const isPaymentWorking = useSelector((store) => store.user_data.user_data)?.isPaymentWorking === '1';
     const isSubscribed = useSelector((store) => store.user_data.isSubscribed)
 
+    console.log(userData)
+
     const onPress = () => {
         Linking.openURL(`https://transagro.pro/subscribe-redirect?token=${tokenFromReducer}`)
     }

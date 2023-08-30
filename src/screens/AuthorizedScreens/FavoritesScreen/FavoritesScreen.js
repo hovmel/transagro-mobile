@@ -121,7 +121,7 @@ const FavoritesScreen = ({navigation}) => {
     }
 
     const onFirmPress = item => {
-        if (isSubscribed) {
+        if (isSubscribed || !isPaymentWorking) {
             navigation.navigate('FavoriteSingleFirmScreen', {firmData: item})
         } else {
             setModalVisible(true)

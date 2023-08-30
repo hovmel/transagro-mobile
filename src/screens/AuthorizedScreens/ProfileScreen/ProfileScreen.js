@@ -33,6 +33,7 @@ const ProfileScreen = () => {
     const userData = useSelector((store) => store.user_data.user_data)
     const tokenFromReducer = useSelector((store) => store.user_token.user_token)
     const isSubscribed = useSelector((store) => store.user_data.isSubscribed)
+    const isPaymentWorking = useSelector((store) => store.user_data.user_data)?.isPaymentWorking === '1';
 
     const [modalVisible, setModalVisible] = useState(false)
     const [deleteModalVisible, setDeleteModalVisible] = useState(false)
@@ -121,7 +122,9 @@ const ProfileScreen = () => {
     return (
         <AppWrapper>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <Banner onPress={onBannerPress} subscribe_status={isSubscribed}/>
+                {isPaymentWorking && (
+                    <Banner onPress={onBannerPress} subscribe_status={isSubscribed}/>
+                )}
                 <View style={styles.userDataContainer}>
                     <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
                         <ProfileItem title={'Название организации'} subTitle={userData?.company_name}/>

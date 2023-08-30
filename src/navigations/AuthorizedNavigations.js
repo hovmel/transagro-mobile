@@ -26,6 +26,7 @@ import Drawer8 from "src/assets/icons/drawer_8.svg"
 
 export const AuthorizedNavigations = () => {
     const userData = useSelector((store) => store.user_data.user_data)
+    const isPaymentWorking = useSelector((store) => store.user_data.user_data)?.isPaymentWorking === '1';
 
     return (
         <Drawer.Navigator
@@ -75,11 +76,15 @@ export const AuthorizedNavigations = () => {
                 drawerLabel: ({focused}) => <Text style={[styles.drawerItemTitle, focused && styles.drawerItemTitleActive]}>Личный кабинет</Text>
             }} />
 
-            <Drawer.Screen name="Подписка" component={SubscribeScreen} options={{
-                headerTitleStyle: styles.headerTitleGreen,
-                drawerIcon: () => <Drawer8 />,
-                drawerLabel: ({focused}) => <Text style={[styles.drawerItemTitle, styles.drawerItemTitleGreen, focused && styles.drawerItemTitleActive]}>Подписка</Text>
-            }} />
+            {isPaymentWorking && (
+                <Drawer.Screen name="Подписка" component={SubscribeScreen} options={{
+                    headerTitleStyle: styles.headerTitleGreen,
+                    drawerIcon: () => <Drawer8 />,
+                    drawerLabel: ({focused}) => <Text style={[styles.drawerItemTitle, styles.drawerItemTitleGreen, focused && styles.drawerItemTitleActive]}>Подписка</Text>
+                }} />
+            )}
+
+
         </Drawer.Navigator>
     );
 };
