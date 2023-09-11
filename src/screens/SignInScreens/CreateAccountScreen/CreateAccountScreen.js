@@ -12,8 +12,9 @@ import MySelect from "../../../components/my-select/my-select";
 import CreateAccountIcon from "../../../assets/icons/create-account-icon";
 import {COLORS} from "../../../themes/constants/colors";
 import {FONTS} from "../../../themes/constants/fonts";
-import {setInfoModalText} from "../../../store/actions/user_data";
+import {setInfoModalText, setUserData} from "../../../store/actions/user_data";
 import {welcomeText} from "../../../services/helpers/constants";
+import {handleGetUserData} from "../../../services/API/get-user-data";
 
 const ipOOO = [{title: 'ООО'}, {title: 'ИП'}, {title: 'Самозанятый'}];
 
@@ -68,6 +69,9 @@ const CreateAccountScreen = (props) => {
                 await AsyncStorage.setItem('token', res.data.api_token);
                 dispatch(setUserToken(res.data.api_token));
                 dispatch(setInfoModalText(welcomeText));
+                handleGetUserData(res.data.api_token).then(r => {
+                    dispatch(setUserData(r.user))
+                })
             } else {
                 if (res.message === 'Validation errors') {
                     let error = 'Заполните поля правильно'

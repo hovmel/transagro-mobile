@@ -8,7 +8,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action){
   switch (action.type){
-    case SET_INFO_MODAL_TEXT:{
+    case SET_INFO_MODAL_TEXT: {
       return {
         ...state,
         infoModalText: action.payload,
@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action){
       return {
         ...state,
         user_data,
-        isSubscribed: false
+        isSubscribed: isSubscribed
       }
     }
     case DELETE_USER_DATA:{

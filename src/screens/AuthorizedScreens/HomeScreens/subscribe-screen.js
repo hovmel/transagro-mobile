@@ -1,14 +1,16 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, Linking} from "react-native";
 import AppWrapper from "src/components/wrapper/app-wrapper";
 import AppButton from "src/components/button/app-button";
 import {globalStyles} from "src/themes/global_styles/global_styles";
 import {COLORS} from "src/themes/constants/colors";
 import {FONTS} from "src/themes/constants/fonts";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ROLES} from "src/themes/constants/roles";
-import { Link } from '@react-navigation/native';
+import {Link, useIsFocused} from '@react-navigation/native';
 import moment from "moment/moment";
+import {handleGetUserData} from "../../../services/API/get-user-data";
+import {setUserData} from "../../../store/actions/user_data";
 
 const SubscribeScreen = () => {
     const userData = useSelector((store) => store.user_data.user_data)
@@ -16,11 +18,25 @@ const SubscribeScreen = () => {
     const isPaymentWorking = useSelector((store) => store.user_data.user_data)?.isPaymentWorking === '1';
     const isSubscribed = useSelector((store) => store.user_data.isSubscribed)
 
-    console.log(userData)
+    const isFocused = useIsFocused();
+    const dispatch = useDispatch();
 
     const onPress = () => {
         Linking.openURL(`https://transagro.pro/subscribe-redirect?token=${tokenFromReducer}`)
     }
+
+    useEffect(() => {
+        if (isFocused && tokenFromReducer) {
+            const timer = setInterval(() => {
+                console.log('getting account...')
+                handleGetUserData(tokenFromReducer).then(r => {
+                    dispatch(setUserData(r.user))
+                })
+            }, 3000)
+
+            return () => clearInterval(timer);
+        }
+    }, [isFocused])
 
     return (
         <AppWrapper button={isPaymentWorking && <AppButton onPress={onPress} buttonTitle={isSubscribed ? 'Продлить подписку' : 'Оформить подписку'}/>}>

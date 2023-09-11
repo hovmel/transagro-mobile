@@ -11,6 +11,8 @@ import {setUserToken} from "src/store/actions/user_token";
 import {handleLoginApi} from "src/services/API/registration";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {FONTS} from "../../../themes/constants/fonts";
+import {handleGetUserData} from "../../../services/API/get-user-data";
+import {setUserData} from "../../../store/actions/user_data";
 
 
 const SignInScreen = () => {
@@ -28,12 +30,16 @@ const SignInScreen = () => {
             password: password,
         }
        handleLoginApi(data).then((r) => {
+           console.log(r)
             if (!r.success){
                 setError(true)
             }else {
                 setError(false)
                 AsyncStorage.setItem('token', r.company.api_token);
                 dispatch(setUserToken(r.company.api_token))
+                handleGetUserData(r.company.api_token).then(r2 => {
+                    dispatch(setUserData(r2.user))
+                })
                // console.log(r.company.api_token, 'success')
             }
        })
