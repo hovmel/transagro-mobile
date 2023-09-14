@@ -13,7 +13,7 @@ const MyModal = ({isVisible, closeFunction, leftButtonText, rightButtonText, onL
                 isVisible={isVisible}
                 onBackdropPress={closeFunction}
                 onBackButtonPress={closeFunction}
-                useNativeDriver={Platform.OS === 'android'}
+                useNativeDriver
                 animationIn={'fadeIn'}
                 animationOut={'fadeOut'}
                 backdropOpacity={0.4}

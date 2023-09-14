@@ -4,15 +4,18 @@ import {Provider} from "react-redux";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Navigations} from "./src/navigations/index";
 import {store} from "./src/store";
-import { useFonts } from 'expo-font';
+import {loadAsync, useFonts } from 'expo-font';
 import {FONTS_TO_IMPORT} from "./src/themes/constants/fonts";
 import * as SplashScreen from "expo-splash-screen";
+import {useEffect, useState} from "react";
 
 SplashScreen.preventAutoHideAsync();
 
 
 const  App = ()=> {
     const [isLoaded] = useFonts(FONTS_TO_IMPORT);
+
+
 
     if (!isLoaded) {
         return null;
