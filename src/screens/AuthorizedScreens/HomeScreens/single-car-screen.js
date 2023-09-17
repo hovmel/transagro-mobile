@@ -21,6 +21,7 @@ import {
 import {setFavorites} from "../../../store/actions/favorites";
 import AppButton from "../../../components/button/app-button";
 import moment from "moment/moment";
+import PhoneNumber from "../../../components/PhoneNumber";
 
 const SingleCarScreen = ({route, navigation}) => {
     const {singleCar, isOtherCompaniesCar} = route.params;
@@ -115,7 +116,7 @@ const SingleCarScreen = ({route, navigation}) => {
                                 <View style={styles.itemInfo}>
                                     <Text style={styles.itemTitle}>Менеджер</Text>
                                     <Text style={styles.itemText}>{singleCar?.manager_name}</Text>
-                                    <Text style={styles.itemText}>{singleCar?.manager_phone_number}</Text>
+                                    <PhoneNumber>{singleCar?.manager_phone_number}</PhoneNumber>
                                 </View>
                             </View>
                         )}

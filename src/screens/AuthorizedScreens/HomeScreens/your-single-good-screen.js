@@ -475,7 +475,7 @@ const MySingleGoodScreen = ({route}) => {
                                 <View style={styles.itemInfo}>
                                     <Text style={styles.itemTitle}>Менеджер</Text>
                                     <Text style={styles.itemText}>{singleGood?.manager_name}</Text>
-                                    <Text style={styles.itemText}>{singleGood?.manager_phone_number}</Text>
+                                    <Text style={[styles.itemText, {marginTop: 6}]}>{singleGood?.manager_phone_number}</Text>
                                 </View>
                             </View>
 

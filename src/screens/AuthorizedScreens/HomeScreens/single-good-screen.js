@@ -20,6 +20,7 @@ import {setFavorites} from "../../../store/actions/favorites";
 import {useDispatch, useSelector} from "react-redux";
 import FirmIcon from "../../../assets/icons/firm.svg";
 import AppButton from "../../../components/button/app-button";
+import PhoneNumber from "../../../components/PhoneNumber";
 
 const SingleGoodScreen = ({route, navigation}) => {
     const tokenFromReducer = useSelector((store) => store.user_token.user_token)
@@ -172,7 +173,7 @@ const SingleGoodScreen = ({route, navigation}) => {
                                 <View style={styles.itemInfo}>
                                     <Text style={styles.itemTitle}>Менеджер</Text>
                                     <Text style={styles.itemText}>{singleGood?.manager_name}</Text>
-                                    <Text style={styles.itemText}>{singleGood?.manager_phone_number}</Text>
+                                    <PhoneNumber>{singleGood?.manager_phone_number}</PhoneNumber>
                                 </View>
                             </View>
                         )}

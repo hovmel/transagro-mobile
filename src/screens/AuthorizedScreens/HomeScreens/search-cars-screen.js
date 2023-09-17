@@ -118,12 +118,12 @@ const SearchCarsScreen = () => {
                     <View style={styles.iconView}><LocationShortIcon /></View>
                     <View style={styles.citiesBlock}>
                         <View style={[styles.row, styles.withMarginBottom]}>
-                            <Text style={styles.cityName}>{item.upload_city_name}</Text>
+                            <Text numberOfLines={1} style={styles.cityName}>{item.upload_city_name}</Text>
                             <View style={styles.arrowView}>
                                 <LongArrowRightIcon />
                             </View>
                         </View>
-                        <Text style={styles.cityName}>{item.onload_city_name}</Text>
+                        <Text numberOfLines={1} style={styles.cityName}>{item.onload_city_name}</Text>
                     </View>
                 </View>
 
@@ -271,6 +271,7 @@ const styles = StyleSheet.create({
         color: COLORS.text1,
         fontFamily: FONTS.medium,
         fontSize: 16,
+        maxWidth: '80%'
     },
     withMarginBottom: {
         marginBottom: 10

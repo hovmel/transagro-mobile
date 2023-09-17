@@ -30,6 +30,7 @@ import moment from "moment/moment";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import SelectPayment from "../../../components/select-payment/select-payment";
 import {duplicateArray} from "../../../services/helpers/duplicateArray";
+import PhoneNumber from "../../../components/PhoneNumber";
 
 
 const FavoriteSingleCarScreen = ({route}) => {
@@ -79,7 +80,7 @@ const FavoriteSingleCarScreen = ({route}) => {
                             <View style={styles.itemInfo}>
                                 <Text style={styles.itemTitle}>Менеджер</Text>
                                 <Text style={styles.itemText}>{singleCar?.manager_name}</Text>
-                                <Text style={styles.itemText}>{singleCar?.manager_phone_number}</Text>
+                                <PhoneNumber>{singleCar?.manager_phone_number}</PhoneNumber>
                             </View>
                         </View>
                     )}

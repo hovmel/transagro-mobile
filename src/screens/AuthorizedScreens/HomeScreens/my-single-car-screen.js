@@ -228,7 +228,7 @@ const MySingleCarScreen = ({route}) => {
                                 <View style={styles.itemInfo}>
                                     <Text style={styles.itemTitle}>Менеджер</Text>
                                     <Text style={styles.itemText}>{singleCar?.manager_name}</Text>
-                                    <Text style={styles.itemText}>{singleCar?.manager_phone_number}</Text>
+                                    <Text style={[styles.itemText, {marginTop: 6}]}>{singleCar?.manager_phone_number}</Text>
                                 </View>
                             </View>
 

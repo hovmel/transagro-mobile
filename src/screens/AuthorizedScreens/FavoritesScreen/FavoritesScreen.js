@@ -200,12 +200,12 @@ const FavoritesScreen = ({navigation}) => {
                 <View style={styles.iconView}><LocationShortIcon /></View>
                 <View style={styles.citiesBlock}>
                     <View style={[styles.row, styles.withMarginBottom]}>
-                        <Text style={styles.cityName}>{item.upload_city_name}</Text>
+                        <Text style={[styles.cityName, styles.short]} numberOfLines={1}>{item.upload_city_name}</Text>
                         <View style={styles.arrowView}>
                             <LongArrowRightIcon />
                         </View>
                     </View>
-                    <Text style={styles.cityName}>{item.onload_city_name}</Text>
+                    <Text style={styles.cityName} numberOfLines={1}>{item.onload_city_name}</Text>
                 </View>
             </View>
 
