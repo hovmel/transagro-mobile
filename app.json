@@ -2,7 +2,7 @@
   "expo": {
     "name": "Transagro",
     "slug": "Transagro",
-    "version": "1.0.1",
+    "version": "1.1.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -19,6 +19,7 @@
       "bundleIdentifier": "kz.rakoyedov.transagro"
     },
     "android": {
+      "versionCode": 12,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -30,8 +31,23 @@
     },
     "extra": {
       "eas": {
-        "projectId": "6a6ef957-95e5-4c0b-a870-38d14c5dc26c"
+        "projectId": "c045fd61-6ae3-4b34-8f41-158f4b055334"
       }
-    }
-  }
+    },
+    "plugins": [
+      "expo-build-properties"
+    ]
+  },
+  "plugins": [
+    [
+      "expo-build-properties",
+      {
+        "android": {
+          "compileSdkVersion": 33,
+          "targetSdkVersion": 33,
+          "buildToolsVersion": "33.0.0"
+        }
+      }
+    ]
+  ]
 }
